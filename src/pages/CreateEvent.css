@@ -1,0 +1,236 @@
+/* ── Canvas de confetti ─────────────────────────────────────── */
+.confetti-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Página ─────────────────────────────────────────────────── */
+.confirm-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  position: relative;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.confirm-page--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Card central ───────────────────────────────────────────── */
+.confirm-card {
+  position: relative;
+  z-index: 1;
+  background: var(--surface, #1a1a1a);
+  border: 1px solid rgba(245, 166, 35, 0.2);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+/* ── Ícone de check animado ─────────────────────────────────── */
+.confirm-icon-wrap {
+  width: 72px;
+  height: 72px;
+}
+
+.confirm-check-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.check-circle {
+  stroke-dasharray: 165;
+  stroke-dashoffset: 165;
+  animation: draw-circle 0.6s ease forwards 0.15s;
+}
+
+.check-mark {
+  stroke-dasharray: 36;
+  stroke-dashoffset: 36;
+  animation: draw-mark 0.4s ease forwards 0.75s;
+}
+
+@keyframes draw-circle {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes draw-mark {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ── Textos ─────────────────────────────────────────────────── */
+.confirm-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.confirm-title {
+  font-family: var(--font-display, inherit);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  color: var(--text-primary, #fff);
+  margin: 0;
+}
+
+.confirm-sub {
+  font-size: 0.9rem;
+  color: var(--text-muted, #999);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 340px;
+}
+
+/* ── Resumo do pedido ───────────────────────────────────────── */
+.confirm-order {
+  width: 100%;
+  background: var(--surface-2, #111);
+  border: 1px solid var(--border, #2a2a2a);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.confirm-order__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border, #2a2a2a);
+}
+
+.confirm-order__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted, #999);
+}
+
+.confirm-order__id {
+  font-size: 0.75rem;
+  font-family: var(--font-mono, monospace);
+  color: var(--accent, #f5a623);
+}
+
+.confirm-order__items {
+  padding: 0.5rem 0;
+}
+
+.confirm-order__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.55rem 1rem;
+}
+
+.confirm-order__item-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+
+.confirm-order__event {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary, #fff);
+}
+
+.confirm-order__ticket {
+  font-size: 0.75rem;
+  color: var(--text-muted, #999);
+}
+
+.confirm-order__price {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary, #fff);
+  white-space: nowrap;
+}
+
+.confirm-order__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border, #2a2a2a);
+  font-size: 0.85rem;
+  color: var(--text-muted, #999);
+}
+
+.confirm-order__total-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent, #f5a623);
+}
+
+/* ── Botões ─────────────────────────────────────────────────── */
+.confirm-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.confirm-btn {
+  width: 100%;
+  padding: 0.85rem 1.5rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    opacity 0.15s ease,
+    transform 0.1s ease;
+  border: none;
+}
+
+.confirm-btn--primary {
+  background: var(--accent, #f5a623);
+  color: #111;
+}
+
+.confirm-btn--primary:hover {
+  opacity: 0.9;
+}
+
+.confirm-btn--ghost {
+  background: transparent;
+  border: 1px solid var(--border, #2a2a2a);
+  color: var(--text-muted, #999);
+}
+
+.confirm-btn--ghost:hover {
+  border-color: var(--text-muted, #999);
+  color: var(--text-primary, #fff);
+}
+
+/* ── Responsivo ─────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .confirm-card {
+    padding: 2rem 1.25rem;
+    border-radius: 16px;
+  }
+}

@@ -1,0 +1,331 @@
+/* ── Not found ── */
+.event-details__not-found {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-family: var(--font-sans);
+  color: var(--text-muted);
+  text-align: center;
+  padding: 40px;
+}
+
+.event-details__not-found span {
+  font-size: 3rem;
+}
+
+.event-details__not-found h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.event-details__not-found p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.event-details__back-link {
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 8px;
+  transition: opacity 0.2s;
+}
+
+.event-details__back-link:hover {
+  opacity: 0.75;
+}
+
+/* ── Hero ── */
+.event-details__hero {
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+}
+
+.event-details__hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.event-details__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 12, 0.3) 0%,
+    rgba(10, 10, 12, 0.85) 100%
+  );
+}
+
+/* FIXED: removido inset: 0 conflitante com left/right/margin explícitos */
+.event-details__hero-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 28px 40px 40px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.event-details__back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 100px;
+  cursor: pointer;
+  width: fit-content;
+  backdrop-filter: blur(8px);
+  transition: background 0.2s;
+}
+
+.event-details__back-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.event-details__hero-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.event-details__category {
+  display: inline-block;
+  background: var(--gold);
+  color: #0a0a0c;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+  width: fit-content;
+}
+
+.event-details__name {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.15;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Body layout ── */
+.event-details__body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 48px;
+  align-items: start;
+}
+
+/* ── Info (left) ── */
+.event-details__info {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Quick facts */
+.event-details__facts {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.fact-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.fact-item__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+
+.fact-item__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fact-item__label {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.fact-item__value {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-transform: capitalize;
+}
+
+/* Section */
+.event-details__section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.event-details__section-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.event-details__description {
+  font-family: var(--font-sans);
+  font-size: 0.97rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* Price range */
+.event-details__price-range {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.price-range-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.price-range-item__name {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.price-range-item__price {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* ── Cart toast ── */
+/* FIXED: @keyframes definido uma única vez, fora de qualquer @media */
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.cart-toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a1e;
+  border: 1px solid var(--gold);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 14px 24px;
+  border-radius: 100px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+  z-index: 999;
+  animation: toastIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .event-details__hero {
+    height: 360px;
+  }
+
+  .event-details__hero-content {
+    padding: 20px 20px 28px;
+  }
+
+  .event-details__body {
+    grid-template-columns: 1fr;
+    padding: 32px 20px 60px;
+    gap: 32px;
+  }
+
+  .event-details__aside {
+    order: -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-details__hero {
+    height: 280px;
+  }
+
+  .event-details__name {
+    font-size: 1.6rem;
+  }
+
+  /* FIXED: apenas override das propriedades visuais do toast, sem redefinir @keyframes */
+  .cart-toast {
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    transform: none;
+    text-align: center;
+    white-space: normal;
+  }
+}

@@ -1,0 +1,338 @@
+/* ══════════════════════════════════════════════════════════════
+   SUCCESS.CSS — Gooes
+   Bugs corrigidos:
+   1. Ícone gigante → success__icon tem width/height fixos + overflow:hidden
+   2. Card cortado → min-height usa dvh + padding compensa navbar (64px)
+   3. Texto cortado mobile → padding lateral garantido no card
+══════════════════════════════════════════════════════════════ */
+
+/* ── Empty state ── */
+.success-empty {
+  min-height: calc(100dvh - 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  padding: 40px 24px;
+  font-family: var(--font-sans);
+}
+
+.success-empty__emoji {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.success-empty__title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary, #fff);
+  margin: 0;
+}
+
+.success-empty__desc {
+  font-size: 0.9rem;
+  color: var(--text-muted, #666);
+  margin: 0;
+}
+
+.success-empty__btn {
+  margin-top: 8px;
+  background: #f5a623;
+  color: #000;
+  border: none;
+  border-radius: 100px;
+  padding: 12px 28px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.success-empty__btn:hover {
+  opacity: 0.88;
+}
+
+/* ── Page wrapper ── */
+.success {
+  /* FIX 1: desconta a navbar de 64px para centralizar corretamente */
+  min-height: calc(100dvh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* FIX 2: padding garante espaço em mobile sem cortar o card */
+  padding: 40px 16px;
+  position: relative;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+/* ── Confetti canvas — cobre a viewport inteira, não o card ── */
+.success__confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Card central ── */
+.success__card {
+  position: relative;
+  z-index: 1;
+  background: #111111;
+  border: 0.5px solid #222222;
+  border-radius: 20px;
+  /* FIX 3: padding lateral mínimo para não cortar texto em mobile */
+  padding: 48px 40px;
+  max-width: 480px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+  animation: cardReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Ícone ── */
+.success__icon {
+  /* FIX 4: tamanho FIXO + overflow:hidden impede SVG de vazar */
+  width: 64px;
+  height: 64px;
+  min-width: 64px; /* evita que flex comprima */
+  min-height: 64px;
+  border-radius: 50%;
+  background: #f5a623;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* garante que o SVG não ultrapasse o círculo */
+  flex-shrink: 0;
+  box-shadow: 0 8px 24px rgba(245, 166, 35, 0.4);
+  animation: iconPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s both;
+}
+
+/* FIX 5: SVG dentro do ícone não pode ser display:block sem tamanho */
+.success__icon svg {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+@keyframes iconPop {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ── Heading ── */
+.success__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.success__title {
+  font-family: var(--font-display, "Georgia", serif);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.success__subtitle {
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 0.9rem;
+  color: #666666;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── Order ID ── */
+.success__order-id {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 0.5px solid #2a2a2a;
+  border-radius: 100px;
+  padding: 8px 18px;
+}
+
+.success__order-id-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #555555;
+}
+
+.success__order-id-value {
+  font-family: monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #f5a623;
+  letter-spacing: 0.05em;
+}
+
+/* ── Summary ── */
+.success__summary {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 0.5px solid #222222;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.success__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left;
+}
+
+.success__item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0; /* evita overflow do texto longo */
+}
+
+.success__item-event {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.3;
+  /* trunca nomes longos de evento */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.success__item-ticket {
+  font-size: 0.78rem;
+  color: #555555;
+}
+
+.success__item-price {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #f5a623;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.success__divider {
+  height: 0.5px;
+  background: #222222;
+}
+
+.success__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #555555;
+}
+
+.success__total-value {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+/* ── Actions ── */
+.success__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.success__btn {
+  width: 100%;
+  padding: 13px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition:
+    opacity 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.success__btn--primary {
+  background: #f5a623;
+  color: #000000;
+  border: none;
+}
+
+.success__btn--primary:hover {
+  opacity: 0.88;
+}
+
+.success__btn--ghost {
+  background: transparent;
+  border: 0.5px solid #2a2a2a;
+  color: #555555;
+}
+
+.success__btn--ghost:hover {
+  border-color: #444444;
+  color: #ffffff;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVO
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 520px) {
+  .success__card {
+    /* FIX 6: mobile — padding menor mas nunca zero */
+    padding: 32px 20px;
+    border-radius: 16px;
+    gap: 20px;
+  }
+
+  .success__title {
+    font-size: 1.5rem;
+  }
+
+  .success__item-event {
+    /* em mobile, permite quebrar linha se necessário */
+    white-space: normal;
+  }
+}

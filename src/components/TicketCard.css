@@ -1,0 +1,384 @@
+/* ══════════════════════════════════════════════════════════════
+   TICKETCARD.CSS — Boarding Pass Premium
+══════════════════════════════════════════════════════════════ */
+
+.tc {
+  opacity: 0;
+  animation: tc-rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: default;
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.tc:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.45),
+    0 0 0 0.5px rgba(245, 166, 35, 0.15);
+}
+
+.tc--pressed {
+  transform: scale(0.985) !important;
+}
+
+@keyframes tc-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Body ── */
+.tc__body {
+  display: flex;
+  align-items: stretch;
+  background: #111;
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px 18px 0 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Left accent bar ── */
+.tc__accent {
+  width: 4px;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+/* ── Artwork ── */
+.tc__art {
+  width: 88px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0d0d0d;
+  position: relative;
+  overflow: hidden;
+}
+
+.tc__art-inner {
+  z-index: 1;
+  position: relative;
+}
+
+.tc__emoji {
+  font-size: 2rem;
+  display: block;
+  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.6));
+}
+
+.tc__art-glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  border-radius: 50%;
+  transform: scale(1.5);
+  filter: blur(20px);
+}
+
+/* ── Main info ── */
+.tc__info {
+  flex: 1;
+  min-width: 0;
+  padding: 16px 16px 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tc__info-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.tc__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 100px;
+  border: 0.5px solid;
+}
+
+.tc__status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 4px currentColor;
+  }
+  50% {
+    opacity: 0.5;
+    box-shadow: 0 0 8px currentColor;
+  }
+}
+
+.tc__ticket-type {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 3px 9px;
+  border-radius: 100px;
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+}
+
+.tc__event-name {
+  font-family: var(--font-display, "Georgia", serif);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tc__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tc__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 0.7rem;
+}
+
+.tc__meta-item svg {
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+/* ── Perforated divider ── */
+.tc__perf {
+  width: 20px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background: #111;
+}
+
+.tc__perf-hole {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #0a0a0a;
+  border: 0.5px solid rgba(255, 255, 255, 0.06);
+  position: absolute;
+  z-index: 2;
+}
+
+.tc__perf-hole--top {
+  top: -8px;
+}
+
+.tc__perf-hole--bottom {
+  bottom: -8px;
+}
+
+.tc__perf-line {
+  flex: 1;
+  width: 0;
+  border-left: 1.5px dashed rgba(255, 255, 255, 0.1);
+  margin: 8px 0;
+}
+
+/* ── Stub ── */
+.tc__stub {
+  width: 96px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #0e0e0e;
+  padding: 16px 10px;
+  text-align: center;
+}
+
+.tc__date-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.tc__date-day {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #f5a623;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.tc__date-month {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
+.tc__date-year {
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.05em;
+}
+
+.tc__qty-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.tc__qty-num {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+
+.tc__qty-label {
+  font-size: 0.58rem;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.05em;
+}
+
+.tc__price-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.tc__price {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1;
+}
+
+.tc__price-unit {
+  font-size: 0.58rem;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* ── Actions ── */
+.tc__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #0e0e0e;
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  border-top: none;
+  border-radius: 0 0 18px 18px;
+}
+
+.tc__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 100px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: var(--font-sans, system-ui);
+  white-space: nowrap;
+}
+
+.tc__btn--ghost {
+  background: transparent;
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  padding: 6px 12px;
+}
+
+.tc__btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.tc__btn--primary {
+  background: rgba(245, 166, 35, 0.12);
+  border: 0.5px solid rgba(245, 166, 35, 0.28);
+  color: #f5a623;
+  padding: 6px 14px;
+  margin-left: auto;
+}
+
+.tc__btn--primary:hover {
+  background: rgba(245, 166, 35, 0.2);
+  border-color: rgba(245, 166, 35, 0.4);
+  color: #f5a623;
+}
+
+/* ── Responsive ── */
+@media (max-width: 520px) {
+  .tc__art {
+    width: 64px;
+  }
+
+  .tc__emoji {
+    font-size: 1.6rem;
+  }
+
+  .tc__stub {
+    width: 76px;
+    padding: 12px 8px;
+    gap: 8px;
+  }
+
+  .tc__date-day {
+    font-size: 1.4rem;
+  }
+
+  .tc__actions {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tc__btn--primary {
+    margin-left: 0;
+    flex: 1;
+    justify-content: center;
+  }
+}

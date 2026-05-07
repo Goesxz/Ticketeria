@@ -1,0 +1,370 @@
+/* ══════════════════════════════════════════════════════════════
+   MYTICKETS.CSS — Gooes Design System (v3)
+══════════════════════════════════════════════════════════════ */
+
+/* ── Gate / Empty ── */
+.mytickets-gate,
+.mytickets-empty {
+  min-height: calc(100dvh - 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+  padding: 40px 24px;
+  font-family: var(--font-sans);
+}
+
+/* ── Decorative art rings ── */
+.mytickets-empty__art {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.mytickets-empty__ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 166, 35, 0.18);
+  animation: ring-pulse 3s ease-in-out infinite;
+}
+
+.mytickets-empty__ring--1 {
+  width: 96px;
+  height: 96px;
+  animation-delay: 0s;
+}
+
+.mytickets-empty__ring--2 {
+  width: 70px;
+  height: 70px;
+  animation-delay: 0.6s;
+}
+
+@keyframes ring-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.04);
+  }
+}
+
+.mytickets-empty__icon {
+  font-size: 2.4rem;
+  line-height: 1;
+  z-index: 1;
+  position: relative;
+}
+
+.mytickets-gate h2,
+.mytickets-empty h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary, #fff);
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+
+.mytickets-gate p,
+.mytickets-empty p {
+  font-size: 0.85rem;
+  color: var(--text-muted, #555);
+  margin: 0;
+  max-width: 300px;
+  line-height: 1.5;
+}
+
+.mytickets-gate__btn {
+  margin-top: 6px;
+  background: #f5a623;
+  color: #000;
+  border: none;
+  border-radius: 100px;
+  padding: 12px 28px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    opacity 0.15s,
+    transform 0.15s;
+  letter-spacing: 0.01em;
+}
+
+.mytickets-gate__btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* ── Page shell ── */
+.mytickets {
+  min-height: calc(100dvh - 64px);
+  background: #0a0a0a;
+  padding: 2.5rem 0 5rem;
+}
+
+.mytickets__container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ── Header ── */
+.mytickets__header {
+  margin-bottom: 2rem;
+}
+
+.mytickets__header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.mytickets__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin: 0 0 6px;
+}
+
+.mytickets__title span {
+  color: #f5a623;
+}
+
+.mytickets__subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted, #555);
+  margin: 0;
+}
+
+.mytickets__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.mytickets__badge {
+  background: rgba(245, 166, 35, 0.1);
+  border: 0.5px solid rgba(245, 166, 35, 0.2);
+  color: #f5a623;
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.mytickets__badge--muted {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.mytickets__divider {
+  height: 0.5px;
+  background: rgba(255, 255, 255, 0.07);
+  margin-bottom: 2rem;
+}
+
+/* ── Orders list ── */
+.mytickets__list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ── Order group ── */
+.order-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Order group header ── */
+.order-group__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 0 2px 12px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.07);
+  margin-bottom: 14px;
+}
+
+.order-group__id-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.order-group__icon {
+  font-size: 1.1rem;
+  line-height: 1;
+  opacity: 0.7;
+}
+
+.order-group__label {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 1px;
+}
+
+.order-group__id {
+  font-family: monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #f5a623;
+  letter-spacing: 0.06em;
+}
+
+.order-group__right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.order-group__date {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.order-group__total {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+/* ── Timeline ── */
+.order-timeline {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  padding: 0 2px 16px;
+}
+
+.order-timeline__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  opacity: 0.3;
+  transition: opacity 0.2s;
+}
+
+.order-timeline__item--done {
+  opacity: 1;
+}
+
+.order-timeline__dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.order-timeline__item--done .order-timeline__dot {
+  background: rgba(74, 222, 128, 0.12);
+  border-color: rgba(74, 222, 128, 0.3);
+  color: #4ade80;
+}
+
+.order-timeline__line {
+  position: absolute;
+  top: 10px;
+  left: calc(50% + 10px);
+  right: calc(-50% + 10px);
+  height: 0.5px;
+  background: rgba(74, 222, 128, 0.2);
+}
+
+.order-timeline__item {
+  position: relative;
+}
+
+.order-timeline__label {
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.4);
+  white-space: nowrap;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.order-timeline__item--done .order-timeline__label {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ── Ticket cards stack ── */
+.order-group__tickets {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* ── Order footer ── */
+.order-group__footer {
+  padding: 8px 4px 0;
+  text-align: right;
+}
+
+.order-group__count {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* ── Responsive ── */
+@media (max-width: 520px) {
+  .mytickets {
+    padding: 1.75rem 0 4rem;
+  }
+
+  .mytickets__header-top {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .order-group__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .order-group__right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .order-timeline {
+    display: none; /* hide on mobile to save space */
+  }
+}
