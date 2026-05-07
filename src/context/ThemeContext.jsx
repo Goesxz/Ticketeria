@@ -25,19 +25,11 @@ const ThemeContext = createContext(null);
 function getInitialTheme() {
   try {
     const saved = localStorage.getItem(THEME_KEY);
-    if (saved === "light" || saved === "dark") return saved;
+    if (saved === "dark") return saved;
   } catch {
     /* noop */
   }
-
-  // Preferência do sistema operacional
-  if (typeof window !== "undefined" && window.matchMedia) {
-    return window.matchMedia("(prefers-color-scheme: light)").matches
-      ? "light"
-      : "dark";
-  }
-
-  return "dark"; // fallback padrão
+  return "dark";
 }
 
 /** Aplica o tema no elemento <html> via data-theme */
